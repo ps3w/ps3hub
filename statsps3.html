@@ -2,60 +2,50 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=960, user-scalable=no">
-<title>Status do PS3 — PS3 Hub</title>
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<title>Status do PS3</title>
 <style>
-body, html {margin:0; padding:0; font-family:Arial; background:#000; color:#39FF14; text-align:center;}
-.menu, .container, .status-box {display:inline-block; vertical-align:top;}
-.menu a {color:#39FF14; text-decoration:none; padding:5px 10px; display:inline-block;}
-.container {background:rgba(0,0,0,0.7); padding:15px; border:1px solid #39FF14; border-radius:5px; margin-top:10px;}
-.status-box {width:160px; margin:5px; padding:10px; border:1px solid #39FF14; border-radius:5px; font-size:14px;}
-h1,h2 {margin:5px; font-weight:normal;}
-#ps3panel {display:none;}
+body {margin:0; padding:0; background:#000; color:#39FF14; font-family:Arial; text-align:center;}
 </style>
 </head>
 <body>
 
-<div id="invalid" style="display:none; padding-top:100px;">
-  <h1>⚠ ACESSO INVÁLIDO</h1>
-  <p>Este recurso só funciona no navegador do <b>PS3</b>.</p>
-  <p id="detected"></p>
-</div>
+<h1 id="title">Detectando dispositivo...</h1>
+<p id="info"></p>
 
-<div id="ps3panel">
-  <div class="menu"><a href="https://pudimn712.github.io/ps3hub/">Início</a></div>
-  <div class="container">
-    <h1>Status do PS3</h1>
-    <div id="erro" style="color:red; font-size:14px;"></div>
-    <div class="status-box"><h2>Console</h2><p id="console">Detectando...</p></div>
-    <div class="status-box"><h2>Navegador</h2><p id="nav">--</p></div>
-    <div class="status-box"><h2>Idioma</h2><p id="lang">--</p></div>
-    <div class="status-box"><h2>Resolução</h2><p id="res">--</p></div>
-    <div class="status-box"><h2>FPS</h2><p id="fps">--</p></div>
-    <div class="status-box"><h2>Firmware</h2><p id="fwtype">--</p></div>
-    <div class="status-box"><h2>CPU</h2><p id="cpu">-- °C</p></div>
-    <div class="status-box"><h2>RSX</h2><p id="rsx">-- °C</p></div>
-    <div class="status-box"><h2>Fan</h2><p id="fan">-- RPM</p></div>
-    <div class="status-box"><h2>FW</h2><p id="fw">--</p></div>
-    <div class="status-box"><h2>Syscon</h2><p id="sys">-- °C</p></div>
-    <div class="status-box"><h2>Memória</h2><p id="mem">--</p></div>
-    <div class="status-box"><h2>Uptime</h2><p id="upt">--</p></div>
-  </div>
+<div id="ps3data" style="display:none;">
+  <p>Console: <span id="console">--</span></p>
+  <p>Navegador: <span id="nav">--</span></p>
+  <p>Idioma: <span id="lang">--</span></p>
+  <p>Resolução: <span id="res">--</span></p>
+  <p>FPS: <span id="fps">--</span></p>
+  <p>Firmware: <span id="fwtype">--</span></p>
+  <p>CPU: <span id="cpu">--</span></p>
+  <p>RSX: <span id="rsx">--</span></p>
+  <p>Fan: <span id="fan">--</span></p>
+  <p>FW: <span id="fw">--</span></p>
+  <p>Syscon: <span id="sys">--</span></p>
+  <p>Memória: <span id="mem">--</span></p>
+  <p>Uptime: <span id="upt">--</span></p>
 </div>
 
 <script>
 // DETECÇÃO DE DISPOSITIVO
 var ua = navigator.userAgent.toLowerCase();
-if (ua.indexOf("playstation 3") === -1) {
-  document.getElementById('invalid').style.display = 'block';
-  var d = "PC";
-  if(ua.indexOf("mobile")!==-1 || ua.indexOf("android")!==-1 || ua.indexOf("iphone")!==-1) d="Mobile";
-  document.getElementById('detected').innerText = "Detectado: " + d;
-} else {
-  document.getElementById('ps3panel').style.display = 'block';
+var isPS3 = ua.indexOf("playstation 3") !== -1;
 
-  // FUNÇÕES LEVES
-  function setText(id,text){ var el=document.getElementById(id); if(el) el.innerText=text; }
+if (!isPS3) {
+  document.getElementById('title').innerText = "⚠ ACESSO INVÁLIDO";
+  var d = "PC";
+  if (ua.indexOf("mobile")!==-1 || ua.indexOf("android")!==-1 || ua.indexOf("iphone")!==-1) d="Mobile";
+  document.getElementById('info').innerText = "Este recurso só funciona no navegador do PS3.\nDetectado: " + d;
+} else {
+  document.getElementById('title').innerText = "Status do PS3";
+  document.getElementById('info').innerText = "";
+  document.getElementById('ps3data').style.display = "block";
+
+  // FUNÇÃO SIMPLES PARA ATUALIZAR TEXTO
+  function setText(id,text){ var e=document.getElementById(id); if(e) e.innerText=text; }
 
   setText("console","PS3 Detectado");
   setText("nav",navigator.userAgent);
@@ -66,33 +56,33 @@ if (ua.indexOf("playstation 3") === -1) {
   else if(ua.indexOf("CFW")!==-1) setText("fwtype","CFW");
   else setText("fwtype","OFW / Sem HEN detectado");
 
-  // FPS leve
+  // FPS básico
   var frames=0, last=Date.now();
   setInterval(function(){
     frames++;
     var now=Date.now();
     if(now-last>=1000){
       setText("fps",frames+" FPS");
-      frames=0;
-      last=now;
+      frames=0; last=now;
     }
   },16);
 
-  // Atualização simples WebMAN
-  var endpoints = ["cpursx.ps3","fan.ps3","ps3fw.ps3","systemp.ps3","mem.ps3","uptime.ps3"];
+  // Atualização simples WebMAN (fetchs básicos)
+  var eps = ["cpursx.ps3","fan.ps3","ps3fw.ps3","systemp.ps3","mem.ps3","uptime.ps3"];
   function atualizar(){
-    for(var i=0;i<endpoints.length;i++){
-      (function(key){
-        var url="http://127.0.0.1/"+key;
-        fetch(url).then(function(r){ return r.text(); }).then(function(t){
-          if(key=="cpursx.ps3"){ var c=t.split("/"); setText("cpu",c[0]+" °C"); setText("rsx",c[1]+" °C"); }
-          else if(key=="fan.ps3") setText("fan",t.trim()+" RPM");
-          else if(key=="ps3fw.ps3") setText("fw",t.trim());
-          else if(key=="systemp.ps3") setText("sys",t.trim()+" °C");
-          else if(key=="mem.ps3") setText("mem",t.trim());
-          else if(key=="uptime.ps3") setText("upt",t.trim());
+    for(var i=0;i<eps.length;i++){
+      (function(ep){
+        fetch("http://127.0.0.1/"+ep)
+        .then(function(r){ return r.text(); })
+        .then(function(t){
+          if(ep=="cpursx.ps3"){ var c=t.split("/"); setText("cpu",c[0]+" °C"); setText("rsx",c[1]+" °C"); }
+          else if(ep=="fan.ps3") setText("fan",t.trim()+" RPM");
+          else if(ep=="ps3fw.ps3") setText("fw",t.trim());
+          else if(ep=="systemp.ps3") setText("sys",t.trim()+" °C");
+          else if(ep=="mem.ps3") setText("mem",t.trim());
+          else if(ep=="uptime.ps3") setText("upt",t.trim());
         }).catch(function(){ setText("erro","❌ WebMAN não detectado"); });
-      })(endpoints[i]);
+      })(eps[i]);
     }
   }
   setInterval(atualizar,2000);
