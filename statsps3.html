@@ -34,18 +34,17 @@ body {margin:0; padding:0; background:#000; color:#39FF14; font-family:Arial; te
 var ua = navigator.userAgent.toLowerCase();
 var isPS3 = ua.indexOf("playstation 3") !== -1;
 
-if (!isPS3) {
+function setText(id,text){ var e=document.getElementById(id); if(e) e.innerText=text; }
+
+if(!isPS3){
   document.getElementById('title').innerText = "⚠ ACESSO INVÁLIDO";
   var d = "PC";
-  if (ua.indexOf("mobile")!==-1 || ua.indexOf("android")!==-1 || ua.indexOf("iphone")!==-1) d="Mobile";
+  if(ua.indexOf("mobile")!==-1 || ua.indexOf("android")!==-1 || ua.indexOf("iphone")!==-1) d="Mobile";
   document.getElementById('info').innerText = "Este recurso só funciona no navegador do PS3.\nDetectado: " + d;
-} else {
+}else{
   document.getElementById('title').innerText = "Status do PS3";
   document.getElementById('info').innerText = "";
   document.getElementById('ps3data').style.display = "block";
-
-  // FUNÇÃO SIMPLES PARA ATUALIZAR TEXTO
-  function setText(id,text){ var e=document.getElementById(id); if(e) e.innerText=text; }
 
   setText("console","PS3 Detectado");
   setText("nav",navigator.userAgent);
@@ -56,35 +55,47 @@ if (!isPS3) {
   else if(ua.indexOf("CFW")!==-1) setText("fwtype","CFW");
   else setText("fwtype","OFW / Sem HEN detectado");
 
-  // FPS básico
-  var frames=0, last=Date.now();
+  // FPS simples
+  var frames=0, last=new Date().getTime();
   setInterval(function(){
     frames++;
-    var now=Date.now();
-    if(now-last>=1000){
+    var now = new Date().getTime();
+    if(now - last >= 1000){
       setText("fps",frames+" FPS");
-      frames=0; last=now;
+      frames = 0;
+      last = now;
     }
   },16);
 
-  // Atualização simples WebMAN (fetchs básicos)
-  var eps = ["cpursx.ps3","fan.ps3","ps3fw.ps3","systemp.ps3","mem.ps3","uptime.ps3"];
-  function atualizar(){
-    for(var i=0;i<eps.length;i++){
-      (function(ep){
-        fetch("http://127.0.0.1/"+ep)
-        .then(function(r){ return r.text(); })
-        .then(function(t){
-          if(ep=="cpursx.ps3"){ var c=t.split("/"); setText("cpu",c[0]+" °C"); setText("rsx",c[1]+" °C"); }
-          else if(ep=="fan.ps3") setText("fan",t.trim()+" RPM");
-          else if(ep=="ps3fw.ps3") setText("fw",t.trim());
-          else if(ep=="systemp.ps3") setText("sys",t.trim()+" °C");
-          else if(ep=="mem.ps3") setText("mem",t.trim());
-          else if(ep=="uptime.ps3") setText("upt",t.trim());
-        }).catch(function(){ setText("erro","❌ WebMAN não detectado"); });
-      })(eps[i]);
-    }
+  // FUNÇÃO XMLHTTPRequest
+  function req(url,id1,id2){
+    var x = new XMLHttpRequest();
+    x.open("GET",url,true);
+    x.onreadystatechange = function(){
+      if(x.readyState==4 && x.status==200){
+        var t = x.responseText;
+        if(id1=="cpursx.ps3"){ var c=t.split("/"); setText("cpu",c[0]+" °C"); setText("rsx",c[1]+" °C"); }
+        else if(id1=="fan.ps3") setText("fan",t.trim()+" RPM");
+        else if(id1=="ps3fw.ps3") setText("fw",t.trim());
+        else if(id1=="systemp.ps3") setText("sys",t.trim()+" °C");
+        else if(id1=="mem.ps3") setText("mem",t.trim());
+        else if(id1=="uptime.ps3") setText("upt",t.trim());
+      } else if(x.readyState==4){
+        setText("erro","❌ WebMAN não detectado");
+      }
+    };
+    x.send();
   }
+
+  function atualizar(){
+    req("http://127.0.0.1/cpursx.ps3","cpursx.ps3");
+    req("http://127.0.0.1/fan.ps3","fan.ps3");
+    req("http://127.0.0.1/ps3fw.ps3","ps3fw.ps3");
+    req("http://127.0.0.1/systemp.ps3","systemp.ps3");
+    req("http://127.0.0.1/mem.ps3","mem.ps3");
+    req("http://127.0.0.1/uptime.ps3","uptime.ps3");
+  }
+
   setInterval(atualizar,2000);
   atualizar();
 }
