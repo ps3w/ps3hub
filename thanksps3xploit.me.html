@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=960, user-scalable=no">
+<title>Agradecimentos — PS3Xploit</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* FUNDO */
+body {
+    background: url('background.png') no-repeat center top;
+    background-size: cover;
+    background-color: #000;
+    color: #39FF14;
+}
+
+/* MENU */
+.menu {
+    display: flex;
+    background-color: #111;
+    padding: 5px;
+    border-bottom: 2px solid #39FF14;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu > ul > li {
+    position: relative;
+    float: left;
+}
+
+.menu a {
+    display: block;
+    padding: 8px 15px;
+    color: #39FF14;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.menu li:hover > a {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+/* DROPDOWN */
+.menu ul ul {
+    display: none;
+    position: absolute;
+    background-color: #111;
+    width: 200px;
+    border: 1px solid #39FF14;
+    z-index: 99;
+}
+
+.menu ul li:hover > ul {
+    display: block;
+}
+
+.menu ul ul li {
+    width: 100%;
+}
+
+.language-btn {
+    float: right;
+    margin-left: 20px;
+}
+
+/* CONTEÚDO */
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    background: rgba(0,0,0,0.7);
+    padding: 25px;
+    border: 2px solid #39FF14;
+    border-radius: 10px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #39FF14;
+}
+
+p, li {
+    font-size: 18px;
+}
+
+/* ESCONDER TEXTOS */
+.hidden {
+    display: none;
+}
+</style>
+
+<script>
+function changeLang(lang) {
+    document.getElementById("pt").classList.add("hidden");
+    document.getElementById("en").classList.add("hidden");
+
+    document.getElementById(lang).classList.remove("hidden");
+}
+</script>
+
+</head>
+<body>
+
+<!-- MENU -->
+<div class="menu">
+<ul>
+    <li><a href="https://pudimn712.github.io/ps3hub/">Início</a></li>
+
+    <li class="language-btn">
+        <a href="#" onclick="changeLang('pt')">PT</a>
+    </li>
+    <li class="language-btn">
+        <a href="#" onclick="changeLang('en')">EN</a>
+    </li>
+</ul>
+</div>
+
+<div class="container">
+
+<!-- PORTUGUÊS -->
+<div id="pt">
+<h1>Agradecimentos ao PS3Xploit Team</h1>
+
+<p>
+O nosso projeto e toda a comunidade PS3 só existem graças ao incrível trabalho do 
+<strong>PS3Xploit Team</strong> e de diversos desenvolvedores que dedicaram seu tempo e conhecimento
+para tornar o PS3HEN e outros avanços possíveis.
+</p>
+
+<h2>Equipe Oficial PS3Xploit</h2>
+<ul>
+    <li>W</li>
+    <li>esc0rtd3w</li>
+    <li>bguerville</li>
+    <li>Habib</li>
+    <li>Joonie</li>
+</ul>
+
+<h2>Agradecimentos Especiais</h2>
+<ul>
+    <li>lmn7</li>
+    <li>DeViL303</li>
+    <li>xp3riments</li>
+</ul>
+
+<h2>Agradecimentos (citados no site oficial: <a href="https://ps3xploit.me/">ps3xploit.me</a>)</h2>
+<ul>
+    <li>xerpi — pela adaptação do exploit de memory leak para PS3</li>
+    <li>zecoxao & Joonie — suporte inicial e contínuo</li>
+    <li>mysis — documentação vsh/lv2</li>
+    <li>kakaroto — ferramentas PS3 IDA</li>
+    <li>naherwert — scetool</li>
+    <li>Rebug Team — CFW essencial para o desenvolvimento</li>
+    <li>Cobra Team — compartilhamento do código CobraUSB</li>
+    <li>psdevwiki team</li>
+    <li>STLcardsWS — suporte contínuo</li>
+    <li>e todos os hackers e devs da comunidade PS3, passados e presentes</li>
+</ul>
+
+<p style="text-align:center; font-size:20px; margin-top:25px;">
+<strong>Nosso respeito e gratidão eterna a todos vocês! 💚</strong>
+</p>
+</div>
+
+<!-- ENGLISH -->
+<div id="en" class="hidden">
+<h1>Thanks to the PS3Xploit Team</h1>
+
+<p>
+Our project and the entire PS3 community only exist thanks to the incredible work of the 
+<strong>PS3Xploit Team</strong> and many developers who dedicated their time and knowledge
+to make PS3HEN and all these advancements possible.
+</p>
+
+<h2>Official PS3Xploit Team</h2>
+<ul>
+    <li>W</li>
+    <li>esc0rtd3w</li>
+    <li>bguerville</li>
+    <li>Habib</li>
+    <li>Joonie</li>
+</ul>
+
+<h2>Special Thanks</h2>
+<ul>
+    <li>lmn7</li>
+    <li>DeViL303</li>
+    <li>xp3riments</li>
+</ul>
+
+<h2>Additional Thanks (from the official site: <a href="https://ps3xploit.me/">ps3xploit.me</a>)</h2>
+<ul>
+    <li>xerpi — for porting the memory leak exploit to PS3</li>
+    <li>zecoxao & Joonie — early and ongoing support</li>
+    <li>mysis — vsh/lv2 documentation</li>
+    <li>kakaroto — PS3 IDA tools</li>
+    <li>naherwert — scetool</li>
+    <li>Rebug Team — the only CFW adequate for development</li>
+    <li>Cobra Team — sharing CobraUSB source</li>
+    <li>psdevwiki team</li>
+    <li>STLcardsWS — long-standing contribution & support</li>
+    <li>and all PS3 community hackers/devs, past & present</li>
+</ul>
+
+<p style="text-align:center; font-size:20px; margin-top:25px;">
+<strong>Our deepest respect and gratitude to all of you! 💚</strong>
+</p>
+</div>
+
+</div>
+
+</body>
+</html>

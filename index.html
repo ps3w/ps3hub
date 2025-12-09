@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=960, user-scalable=no">
+<title>PS3 Hub</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* FUNDO COMPATÍVEL PS3 */
+body {
+    background: url('background.png') no-repeat center top;
+    background-size: cover;
+    background-color: #000;
+}
+
+.menu {
+    display: flex;
+    background-color: #111;
+    padding: 5px;
+    border-bottom: 2px solid #39FF14;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu > ul > li {
+    position: relative;
+    float: left;
+}
+
+.menu a {
+    display: block;
+    padding: 8px 15px;
+    color: #39FF14;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.menu li:hover > a {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+/* DROPDOWN */
+.menu ul ul {
+    display: none;
+    position: absolute;
+    background-color: #111;
+    width: 220px;
+    border: 1px solid #39FF14;
+    z-index: 99;
+}
+
+.menu ul li:hover > ul {
+    display: block;
+}
+
+.menu ul ul li {
+    width: 100%;
+}
+
+.menu ul ul a {
+    padding: 10px;
+    border-bottom: 1px solid #000;
+    color: #fff;
+}
+
+.menu ul ul a:hover {
+    background-color: #1f1f1f;
+    color: #39FF14;
+}
+
+/* RESPONSIVO */
+@media screen and (max-width: 960px){
+    .menu { display: block; }
+    .menu ul li { float: none; width: 100%; }
+    .menu ul ul { position: relative; width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="menu">
+<ul>
+
+    <!-- TEMAS -->
+    <li><a href="#">Temas</a>
+        <ul>
+            <li><a href="themes.html">Temas Anime</a></li>
+            <li><a href="futebol.html">Temas Futebol</a></li>
+        </ul>
+    </li>
+
+    <!-- UTILITÁRIOS -->
+    <li><a href="#">Utilitários</a>
+        <ul>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/utils/refs/heads/main/Unlock%20HDD/PS3%20Unlock%20HDD.pkg" target="_blank">Unlock HDD</a></li>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/utils/refs/heads/main/apollo_v2.2.4/apollo-ps3.pkg" target="_blank">Apollo v2.2.4</a></li>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/utils/refs/heads/main/irisman_v4.91/IRISMAN_4.91.pkg" target="_blank">IRISMAN v4.91</a></li>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/utils/refs/heads/main/managunz_v1.42/ManaGunZ_v1.42_nightly_4a11fa4.pkg" target="_blank">ManageGunz v1.42</a></li>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/utils/refs/heads/main/pkgi_v1.4.2/pkgi-ps3.pkg" target="_blank">PKGi v1.4.2</a></li>
+            <li><a href="https://github.com/aldostools/Resources/releases/download/Addons/multiMAN.pkg" target="_blank">MULTIMAN MOD</a></li>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/utils/refs/heads/main/webman_v1.47.48/webMAN_MOD_1.47.48_Installer.pkg" target="_blank">webMAN MOD v1.47.48</a></li>
+        </ul>
+    </li>
+
+    <!-- LOJAS -->
+    <li><a href="#">Lojas</a>
+        <ul>
+            <li><a href="https://tinyurl.com/yzkkjcw4" target="_blank">@Infinitykkj Store BASE</a></li>
+            <li><a href="https://tinyurl.com/33u4hvfz" target="_blank">FIX V2 @Infinitykkj Store</a></li>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/utils/refs/heads/main/FIX%20UNIVERSAL%20-%20Infinitykkj%20STORE.pkg" target="_blank">FIX CFW</a></li>
+        </ul>
+    </li>
+
+    <!-- MULTIMÍDIA -->
+    <li><a href="#">Multimídia</a>
+        <ul>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/multimidia/refs/heads/main/movianm7_v7.0.227/movianM7-7.0.227-playstation3.pkg.392.v7.0.227_brewology_com.pkg" target="_blank">Movian M7</a></li>
+            <li><a href="https://media.githubusercontent.com/media/pudimn712/multimidia/refs/heads/main/netflix_v2.34/Netflix-v2.34-%5BNPUP00030%5D.pkg" target="_blank">Netflix v2.34</a></li>
+            <li><a href="https://media.githubusercontent.com/media/pudimn712/multimidia/refs/heads/main/youtube_v3.02/Youtube-v3.02-v3.03-SPOOF-%5BNPEB01229%5D-NoPSN.pkg" target="_blank">YouTube v3.02</a></li>
+        </ul>
+    </li>
+
+    <li><a href="#">PS3HEN</a>
+        <ul>
+            <li><a href="https://ps3xploit.me/hen/installer/auto/index.html">HEN Auto Installer</a></li>
+            <li><a href="https://ps3xploit.me/hen/installer/index.html">HEN Installer/Enabler</a></li>
+            <li><a href="https://ps3addict.github.io/alternate/">HEN Installer (Alternate)</a></li>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/hfw-ofwps3/refs/heads/master/PS3HEN_3.4.0_4.92_FW.zip">4.92 HFW</a></li>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/hfw-ofwps3/refs/heads/master/PS3HEN_3.3.0_4.91_FW.zip">4.91 HFW</a></li>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/hfw-ofwps3/refs/heads/master/PS3HEN_3.3.0_4.90_FW.zip">4,90 HFW</a></li>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/hfw-ofwps3/refs/heads/master/PS3HEN_3.3.0_4.82_FW.zip">4.82 OFW</a></li>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/hfw-ofwps3/refs/heads/master/PS3HEN_3.3.0_4.81_FW.zip">4.81 OFW</a></li>
+            <li><a href="https://raw.githubusercontent.com/pudimn712/hfw-ofwps3/refs/heads/master/PS3HEN_3.3.0_4.80_FW.zip">4.80 OFW</a></li>
+            <li><a href="thanksps3xploit.me.html">Thanks ps3xploit.me!</a></li>
+        </ul>
+    </li>
+
+</ul>
+</div>
+
+</body>
+</html>
