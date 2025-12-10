@@ -6,22 +6,29 @@
 <title>Temas — PS3 Hub</title>
 
 <style>
-body, html {
+html, body {
     margin: 0;
     padding: 0;
-    background: url('https://github.com/pudimn712/ps3hub/blob/main/background.png?raw=true') no-repeat top center;
-    background-size: cover;
-    font-family: Arial, sans-serif;
     height: 100%;
+    font-family: Arial, sans-serif;
+    background: url('https://github.com/pudimn712/ps3hub/blob/main/background.png?raw=true') no-repeat center top;
+    background-size: cover;
     color: #39FF14;
 }
 
-/* MENU */
+/* MENU COMPATÍVEL COM O INDEX */
 .menu {
-    display: flex;
+    display: block;
     background-color: #111;
     padding: 5px;
     border-bottom: 2px solid #39FF14;
+    min-height: 40px;
+}
+
+.menu::after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 .menu ul {
@@ -50,14 +57,14 @@ body, html {
     color: #fff;
 }
 
-/* DROPDOWN */
+/* Submenu (mesmo padrão do index) */
 .menu ul ul {
     display: none;
     position: absolute;
     background-color: #111;
     width: 220px;
     border: 1px solid #39FF14;
-    z-index: 99;
+    z-index: 999;
 }
 
 .menu ul li:hover > ul {
@@ -90,7 +97,6 @@ body, html {
 
 <body>
 
-<!-- MENU NOVO -->
 <div class="menu">
 <ul>
   <li><a href="https://pudimn712.github.io/ps3hub/">Início</a></li>
@@ -99,34 +105,28 @@ body, html {
 
 <br>
 
-
-<!-- TABELA DE TEMAS – (CONTEÚDO MANTIDO 100% IGUAL) -->
 <table border="0" cellspacing="20" cellpadding="10" align="center">
 
 <tr>
 
 <td align="center" bgcolor="#111" width="200" height="240" style="border:2px solid #39FF14;">
-  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/ichigo/ichigo.jpg" width="200">
-  <br><br>
-  <font size="4"><a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/ichigo/1CHI1G0_ANIMPS3THEME_ANIMUGENZ%20(1).p3t" style="color:#39FF14;">Baixar Tema - Ichigo</a></font>
+  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/ichigo/ichigo.jpg" width="200"><br><br>
+  <a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/ichigo/1CHI1G0_ANIMPS3THEME_ANIMUGENZ%20(1).p3t" style="color:#39FF14; font-size:16px;">Baixar Tema - Ichigo</a>
 </td>
 
 <td align="center" bgcolor="#111" width="200" height="240" style="border:2px solid #39FF14;">
-  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/gohan/gohan.jpg" width="200">
-  <br><br>
-  <font size="4"><a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/gohan/60H4N_834S7_ANIMPS3THEME_ANIMUGENZ.p3t" style="color:#39FF14;">Baixar Tema - Gohan</a></font>
+  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/gohan/gohan.jpg" width="200"><br><br>
+  <a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/gohan/60H4N_834S7_ANIMPS3THEME_ANIMUGENZ.p3t" style="color:#39FF14; font-size:16px;">Baixar Tema - Gohan</a>
 </td>
 
 <td align="center" bgcolor="#111" width="200" height="240" style="border:2px solid #39FF14;">
-  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/vegeta/vegeta.jpg" width="200">
-  <br><br>
-  <font size="4"><a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/vegeta/V3G374_ANIMPS3THEME_ANIMUGENZ.p3t" style="color:#39FF14;">Baixar Tema - Vegeta</a></font>
+  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/vegeta/vegeta.jpg" width="200"><br><br>
+  <a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/vegeta/V3G374_ANIMPS3THEME_ANIMUGENZ.p3t" style="color:#39FF14; font-size:16px;">Baixar Tema - Vegeta</a>
 </td>
 
 <td align="center" bgcolor="#111" width="200" height="240" style="border:2px solid #39FF14;">
-  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/ulquiorra/ulquiorra.jpg" width="200">
-  <br><br>
-  <font size="4"><a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/ulquiorra/ULQU10RR4_PS3THM_ANIMUGENZ.p3t" style="color:#39FF14;">Baixar Tema - Ulquiorra</a></font>
+  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/ulquiorra/ulquiorra.jpg" width="200"><br><br>
+  <a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/ulquiorra/ULQU10RR4_PS3THM_ANIMUGENZ.p3t" style="color:#39FF14; font-size:16px;">Baixar Tema - Ulquiorra</a>
 </td>
 
 </tr>
@@ -134,27 +134,23 @@ body, html {
 <tr>
 
 <td align="center" bgcolor="#111" width="200" height="240" style="border:2px solid #39FF14;">
-  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/morovsgoku/morovsgoku.jpg" width="200">
-  <br><br>
-  <font size="4"><a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/morovsgoku/M0R0VSG0KU_ANIM_PS3THEME_BY_ANIMUGENZ.p3t" style="color:#39FF14;">Baixar Tema - Moro vs Goku</a></font>
+  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/morovsgoku/morovsgoku.jpg" width="200"><br><br>
+  <a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/morovsgoku/M0R0VSG0KU_ANIM_PS3THEME_BY_ANIMUGENZ.p3t" style="color:#39FF14; font-size:16px;">Baixar Tema - Moro vs Goku</a>
 </td>
 
 <td align="center" bgcolor="#111" width="200" height="240" style="border:2px solid #39FF14;">
-  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/aizen.jpg" width="200">
-  <br><br>
-  <font size="4"><a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/41Z3N_ANIMPS3THEME_ANIMUGENZ.p3t" style="color:#39FF14;">Baixar Tema - Aizen</a></font>
+  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/aizen.jpg" width="200"><br><br>
+  <a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/41Z3N_ANIMPS3THEME_ANIMUGENZ.p3t" style="color:#39FF14; font-size:16px;">Baixar Tema - Aizen</a>
 </td>
 
 <td align="center" bgcolor="#111" width="200" height="240" style="border:2px solid #39FF14;">
-  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/freeza.jpg" width="200">
-  <br><br>
-  <font size="4"><a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/BL4CKFR33Z3R_ANIM_PS3THEME_BY_ANIMUGENZ.p3t" style="color:#39FF14;">Baixar Tema - Black Freeza</a></font>
+  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/freeza.jpg" width="200"><br><br>
+  <a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/BL4CKFR33Z3R_ANIM_PS3THEME_BY_ANIMUGENZ.p3t" style="color:#39FF14; font-size:16px;">Baixar Tema - Black Freeza</a>
 </td>
 
 <td align="center" bgcolor="#111" width="200" height="240" style="border:2px solid #39FF14;">
-  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/uigoku/uigoku.jpg" width="200">
-  <br><br>
-  <font size="4"><a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/uigoku/U1MG0KU_ANIMPS3THEME_ANIMUGENZ.p3t" style="color:#39FF14;">Baixar Tema - UI Goku</a></font>
+  <img src="https://raw.githubusercontent.com/pudimn712/themes/main/uigoku/uigoku.jpg" width="200"><br><br>
+  <a href="https://raw.githubusercontent.com/pudimn712/themes/refs/heads/main/uigoku/U1MG0KU_ANIMPS3THEME_ANIMUGENZ.p3t" style="color:#39FF14; font-size:16px;">Baixar Tema - UI Goku</a>
 </td>
 
 </tr>
@@ -164,9 +160,7 @@ body, html {
 <br><br>
 
 <center>
-<font size="2">
-Créditos: <a href="https://www.youtube.com/AnimugenZ" style="color:#fd0303">AnimugenZ</a>
-</font>
+<font size="2">Créditos: <a href="https://www.youtube.com/AnimugenZ" style="color:red;">AnimugenZ</a></font>
 </center>
 
 </body>
